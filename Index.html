@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Calorie AI - Wizard & Camera</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="light">
+
+<header class="app-header">
+  <div class="logo">🥗 Calorie AI</div>
+  <button id="toggleMode">🌙</button>
+</header>
+
+<main class="container">
+
+  <!-- CIRCULAR PROGRESS -->
+  <section class="card" id="circularProgressCard">
+    <div class="circle-container">
+      <svg id="calorieCircle" width="200" height="200">
+        <circle cx="100" cy="100" r="90" stroke="#ddd" stroke-width="18" fill="none"/>
+        <circle id="calorieProgress" cx="100" cy="100" r="90" stroke="#4CAF50" stroke-width="18" fill="none"
+          stroke-dasharray="565.48" stroke-dashoffset="565.48" stroke-linecap="round"/>
+        <text id="calorieText" x="100" y="110" font-size="28" text-anchor="middle" fill="#222">0 kcal</text>
+      </svg>
+    </div>
+    <div class="macros">
+      <p>🥩 <span id="circleProtein">0</span>g</p>
+      <p>🍞 <span id="circleCarbs">0</span>g</p>
+      <p>🥑 <span id="circleFat">0</span>g</p>
+    </div>
+  </section>
+
+  <!-- WIZARD STEP-BY-STEP -->
+  <section id="wizard" class="card">
+    <div class="wizard-question">
+      <h2 id="questionTitle">مرحبا! ما وزنك؟</h2>
+      <div id="answerOptions"></div>
+      <button id="nextBtn" style="display:none;">التالي ➡️</button>
+    </div>
+  </section>
+
+  <!-- CAMERA SECTION -->
+  <section class="card" id="cameraSection" style="display:none;">
+    <h2>التقط صورة طعامك 🍽️</h2>
+    <video id="video" width="100%" autoplay playsinline></video>
+    <button id="snapBtn">📸 التقاط الصورة</button>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <button id="closeCamera">✖️ إغلاق الكاميرا</button>
+  </section>
+
+  <!-- ADD MEAL -->
+  <section class="card">
+    <h2>إضافة وجبة</h2>
+    <input type="text" id="mealName" placeholder="اسم الطعام">
+    <input type="number" id="mealCalories" placeholder="السعرات">
+    <input type="number" id="mealProtein" placeholder="بروتين (g)">
+    <input type="number" id="mealCarbs" placeholder="كربوهيدرات (g)">
+    <input type="number" id="mealFat" placeholder="دهون (g)">
+    <button id="addMealBtn">➕ إضافة يدويًا</button>
+    <button id="aiMealBtn">📸 تصوير الطعام (AI)</button>
+  </section>
+
+  <!-- MEALS LIST -->
+  <section class="card">
+    <h2>وجبات اليوم</h2>
+    <ul id="mealList"></ul>
+  </section>
+
+  <!-- EXERCISE -->
+  <section class="card">
+    <h2>إضافة تمرين</h2>
+    <input type="text" id="exerciseName" placeholder="اسم التمرين">
+    <input type="number" id="exerciseCalories" placeholder="السعرات المحروقة">
+    <button id="addExerciseBtn">🏃 إضافة تمرين</button>
+  </section>
+
+  <!-- PROGRESS -->
+  <section class="card">
+    <h2>التقدم</h2>
+    <p>المتبقي من السعرات: <span id="remainingCalories">0</span></p>
+    <progress id="progressBar" value="0" max="100"></progress>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <p>© 2026 Calorie AI</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
